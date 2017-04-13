@@ -1,0 +1,23 @@
+{
+  "version": "2.1.6",
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "lib",
+    "module": "commonjs",
+    "target": "es2015",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "noEmitHelpers": false,
+    "strictNullChecks": true,
+    "baseUrl": "./",
+    "paths": {
+      "*" : [ "*"]
+    }
+  },
+  "files": [
+    "src/index.ts"
+  ]
+}

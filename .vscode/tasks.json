@@ -1,0 +1,18 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "isShellCommand": true,
+  "_runner": "terminal",
+  "tasks": [
+    {
+      "taskName": "TS Build",
+      "problemMatcher": "$tsc",
+      "command": "./node_modules/.bin/tsc -p . --outDir ./tmp",
+      "showOutput": "always",
+      "isBuildCommand": true,
+      "isTestCommand": false,
+      "isShellCommand": true
+    }
+  ]
+}

@@ -8,12 +8,12 @@ export class RunMeConfig {
 }
 
 
-export function findCommand(config: RunMeConfig, fileName: string, lineNumber: number | null) : string | null {
+export function findCommand(config: RunMeConfig, file: string, line: number | null) : string | null {
   function fileLine(join:string) : string {
-    return lineNumber ? `${fileName}${join}${lineNumber}` : fileName;
+    return line ? `${file}${join}${line}` : file;
   }
   for (const runner of config.runners) {
-    const match = fileName.match(runner.regex);
+    const match = file.match(runner.regex);
     if (match) {
       return eval(`\`${runner.cmd}\``) as string;
     }

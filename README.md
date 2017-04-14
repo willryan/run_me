@@ -3,11 +3,11 @@ A command line program to dispatch intelligently on what to do for a given file 
 
 ## Usage
 
-`$> run_me <config> <filename> <linenumber> `
+`$> run_me <config> <file> <line#> `
 
 * config - a JSON configuration file that tells `run_me` what to do for a given file name and line number
-* filename - the file name for which to look for commands in the JSON config
-* linenumber - the line number of the file to send to commands in the JSON config
+* file - the file name for which to look for commands in the JSON config
+* line# - the line number of the file to send to commands in the JSON config
 
 ## Description
 `run_me` can be used to dispatch a shell command based on the file name (and line number) passed in. For example, if you are building a web app with a front end in Javascript and a back end in Ruby, you can configure `run_me` so that if you pass in a Ruby file it will run rspec, but if you pass in a Javascript file it will run mocha (or your preferred testing framework). Similarly, if your command to execute unit tests is different than your command to execute system tests (e.g. `cucumber`), you can use `run_me` to abstract around the different commands merely based on which file you want to test. A major goal for `run_me` is to be able to bind one command into your editor and have the tooling just know what to do.
@@ -26,11 +26,11 @@ The regex will be checked against the file name passed in as the second argument
 {
   "runners": [
     {
-      "regex": "spec\\.ts$", // fileName.match(/spec\.ts$/)
-      "cmd": "yarn test ${fileName}"
+      "regex": "spec\\.ts$", // file.match(/spec\.ts$/)
+      "cmd": "yarn test ${file}"
     },
     {
-      "regex": "features", // fileName.match(/features/)
+      "regex": "features", // file.match(/features/)
       "cmd": "bundle exec cucumber ${fileLine(':')}"
     } 
   ]
@@ -40,10 +40,10 @@ The regex will be checked against the file name passed in as the second argument
 #### Available Functions
 The following variables and functions are accessible to `cmd`:
 
-* `fileName` - the 2nd argument to `run_me`
-* `lineNumber` - the 3rd argument to `run_me`
+* `file` - the 2nd argument to `run_me`
+* `line` - the 3rd argument to `run_me`
 * `match` - the RegExp match object
-* `fileLine(join: string) : string` - a function which will join `fileName` and `lineNumber` with a given string, e.g. ':'
+* `fileLine(join: string) : string` - a function which will join `file` and `line` with a given string, e.g. ':'
 
 In the above example, any file passed in matching "*spec.ts" will cause run_me to execute `yarn test filename`.
 

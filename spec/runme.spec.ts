@@ -12,11 +12,11 @@ describe('findCommand', () => {
         },
         {
           regex: "line",
-          cmd: "echo '${lineNumber}'"
+          cmd: "echo '${line}'"
         },
         {
           regex: "feature",
-          cmd: "bundle exec cucumber ${fileName}"
+          cmd: "bundle exec cucumber ${file}"
         },
         {
           regex: "spec",
@@ -44,10 +44,10 @@ describe('findCommand', () => {
   it('returns a vanilla line with no interpolation', () => {
     expect(RunMe.findCommand(config, "foo.basic", 15)).to.eq('uninterpolated');
   });
-  it('interpolates fileName', () => {
+  it('interpolates file', () => {
     expect(RunMe.findCommand(config, "features/foo.feature", 12)).to.eq('bundle exec cucumber features/foo.feature');
   });
-  it('interpolates lineNumber', () => {
+  it('interpolates line', () => {
     expect(RunMe.findCommand(config, "line/foo.ln", 12)).to.eq("echo '12'");
   });
   it('interpolates fileLine', () => {

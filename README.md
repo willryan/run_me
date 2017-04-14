@@ -71,6 +71,9 @@ Examples:
 
 Additionally, you can bind `run_me` into shortcut commands in your favorite editor. I developed `run_me` specifically with VS Code in mind, but it should work with any editor that supports integration with command line tasks. 
 
+#### Logging the command
+
+If env var `LOG_RUN_ME_COMMAND` is truthy, `run_me` will send the command to the console before running it.
 
 
 
